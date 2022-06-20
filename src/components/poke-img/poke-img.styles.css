@@ -1,0 +1,12 @@
+.pokeImage{
+    position: absolute;
+    /* top: 50%;
+    right: 50%; */
+    justify-self: center;
+    grid-area: img;
+    padding: 2px;
+    height: 100px;
+    width: 100px;
+    
+    /* transform: translate(50%, -50%); */
+  }

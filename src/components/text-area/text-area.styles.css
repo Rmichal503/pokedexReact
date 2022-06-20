@@ -1,0 +1,8 @@
+.stats{
+    grid-area: stat;
+    text-align: center;
+  }
+.types{
+    grid-area: type;
+    
+  }

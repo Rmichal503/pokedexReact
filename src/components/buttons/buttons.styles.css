@@ -1,0 +1,18 @@
+.searchingButton {
+    grid-area: button;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+  }
+.luckySpin{
+    grid-area: luck;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+  }
+.add{
+  grid-area: add;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+}

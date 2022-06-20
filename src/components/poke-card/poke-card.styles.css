@@ -1,0 +1,28 @@
+.card{
+    justify-self: center;
+    align-self: center;
+    border: 2px solid black;
+    border-radius: 2ex;
+    position:relative;
+    top: 50vh;
+    display: grid;
+    transform: translate(0, -50%);
+    grid-template-areas: 
+    "img stat"
+    "name type"
+    "input . "
+    "luck luck"
+    "button button"
+    "add add";
+    justify-items: center;
+    align-items: center;
+    max-width: 25vw;
+}
+.card:hover{
+    background-color: gold;
+}
+.pokeName{
+    justify-self: stretch;
+    text-align: center;
+    grid-area: name;
+}
