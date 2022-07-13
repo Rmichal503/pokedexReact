@@ -1,5 +1,5 @@
 .smallPoke{
-    justify-self: center;
+    /* justify-self: center;
     align-self: center;
     border: 2px solid black;
     border-radius: 2ex;
@@ -12,5 +12,22 @@
     "name type";
     justify-items: center;
     align-items: center;
-    max-width: 25vw;
+    max-width: 25vw; */
+    display: flex;
+    flex-direction: column;
+    max-width: 340px;
+    max-height: 420px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 50%;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    border-radius: 2ex;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+.smallColection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

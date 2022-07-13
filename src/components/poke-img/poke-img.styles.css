@@ -1,12 +1,14 @@
 .pokeImage{
-    position: absolute;
+    /* position: absolute; */
     /* top: 50%;
     right: 50%; */
     justify-self: center;
     grid-area: img;
     padding: 2px;
-    height: 100px;
-    width: 100px;
-    
+    height: fit-content;
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 2ex;
+    background-color: white;
     /* transform: translate(50%, -50%); */
   }

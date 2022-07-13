@@ -1,12 +1,9 @@
 .card{
-    justify-self: center;
+    /* justify-self: center;
     align-self: center;
-    border: 2px solid black;
-    border-radius: 2ex;
+    
     position:relative;
-    top: 50vh;
     display: grid;
-    transform: translate(0, -50%);
     grid-template-areas: 
     "img stat"
     "name type"
@@ -15,8 +12,20 @@
     "button button"
     "add add";
     justify-items: center;
+    align-items: center; */
+    /* position:relative; */
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    justify-content: space-evenly;
     align-items: center;
-    max-width: 25vw;
+    flex-basis: 50%;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    border-radius: 2ex;
+    padding: 0.5rem;
+    margin: 1rem;
+    background-color: gold;
 }
 .card:hover{
     background-color: gold;
@@ -24,5 +33,9 @@
 .pokeName{
     justify-self: stretch;
     text-align: center;
-    grid-area: name;
+    /* grid-area: name; */
+}
+.imgAndStats{
+    display: flex;
+    flex-direction: row;
 }

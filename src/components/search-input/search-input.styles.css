@@ -1,5 +1,8 @@
 .pokeSearch{
     grid-area: input;
-    width: 150px;
-    text-align: center;
+    order: 2;
+    flex-grow: 2;
   }
+.pokeSearch input{
+  text-align: center;
+}

@@ -11,7 +11,6 @@ class App extends Component {
       pokemon: {},
       searchString: '',
       smallPokemons: [],
-      toggle: false
     }
   }
   fetchingData=()=>{
@@ -52,15 +51,20 @@ class App extends Component {
   }
 
   toggle=()=>{
-    this.setState({toggle: true})
+    document.querySelector('.smallColection').classList.toggle('show')
   }
 
   render() {
     return (
       <div className="App">
-        <PokeCard pokemon={this.state.pokemon} addingHandler={this.addingSmallCard} clickSearchHandler={this.fetchingData} clickLuckyHandler={this.luckySpin} inputValueHandler={this.inputValue}/>
+        <div className="mainPok">
+          <PokeCard pokemon={this.state.pokemon} addingHandler={this.addingSmallCard} clickSearchHandler={this.fetchingData} clickLuckyHandler={this.luckySpin} inputValueHandler={this.inputValue}/>
+        </div>
         <PokeButton clickHandler={this.toggle} buttonClass='toogle' buttonText={'Show pokemons'} />
-        {this.state.toggle?<SmallPokemon pokemon={this.state.smallPokemons} />:<h1>false</h1>}
+        <div className="smallColection show">
+          {/* {this.state.toggle?<SmallPokemon pokemon={this.state.smallPokemons} />:null} */}
+          <SmallPokemon pokemon={this.state.smallPokemons} />
+        </div>
     </div>
     );
   }
