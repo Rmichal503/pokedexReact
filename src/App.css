@@ -10,13 +10,21 @@
   flex-wrap: wrap;
   flex-direction: column;
 }
-.toogle{
+/* .toogle{
   
-}
+} */
 .show{
   visibility: hidden;
 }
-
+.mainPok{
+  display: flex;
+  flex-direction: row;
+}
+.localButton{
+  width: 90px;
+  height: 30px;
+  margin: 5px;
+}
 
 
 

@@ -11,6 +11,8 @@ class App extends Component {
       pokemon: {},
       searchString: '',
       smallPokemons: [],
+      localCollections:[],
+      localPokemons:[]
     }
   }
   fetchingData=()=>{
@@ -51,7 +53,24 @@ class App extends Component {
   }
 
   toggle=()=>{
-    document.querySelector('.smallColection').classList.toggle('show')
+    document.querySelector('.smallCollection').classList.toggle('show')
+  }
+  saveLocaleDate =()=>{
+    const collName = document.querySelector('.collectionInput').value
+    localStorage.setItem(collName, JSON.stringify(this.state.smallPokemons))
+    console.log(collName)
+  }
+  showLocaleCollection = (localColl)=>{
+    this.setState(()=>{
+      return{localPokemons: JSON.parse(localStorage.getItem(localColl))}
+    })
+
+    // return(<SmallPokemon pokemon={coll}/>)
+  }
+  allKeys=()=>{
+    this.setState(()=>{
+      return{localCollections: Object.keys(localStorage)}
+    })
   }
 
   render() {
@@ -59,9 +78,24 @@ class App extends Component {
       <div className="App">
         <div className="mainPok">
           <PokeCard pokemon={this.state.pokemon} addingHandler={this.addingSmallCard} clickSearchHandler={this.fetchingData} clickLuckyHandler={this.luckySpin} inputValueHandler={this.inputValue}/>
+          {this.state.localCollections[0]?this.state.localCollections.map(el=>{
+            return(<PokeButton clickHandler={()=>{
+              this.showLocaleCollection(el);
+              // console.log(JSON.parse(window.localStorage.getItem(el)))
+              <SmallPokemon pokemon={JSON.parse(window.localStorage.getItem(el))}/>
+            }} buttonText={el} buttonClass='localButton'/>)}):null}
+          <div className='localStorage'>
+          <input className='collectionInput' type={'search'}></input>
+          <PokeButton clickHandler={this.saveLocaleDate} buttonClass='saveData' buttonText={'Save Collection'} />
+          <PokeButton clickHandler={this.allKeys} buttonClass='showCollection' buttonText={'Show Collection'} />
+          <PokeButton clickHandler={()=>{
+            localStorage.clear();
+            alert('Collection Deleted');
+          }} buttonClass='deleteCollection' buttonText={'Delete Collection'} />
+          </div>
         </div>
         <PokeButton clickHandler={this.toggle} buttonClass='toogle' buttonText={'Show pokemons'} />
-        <div className="smallColection show">
+        <div className="smallCollection show">
           {/* {this.state.toggle?<SmallPokemon pokemon={this.state.smallPokemons} />:null} */}
           <SmallPokemon pokemon={this.state.smallPokemons} />
         </div>

@@ -16,7 +16,7 @@ return (
         {/* <h1 className='pokeName'>{isNaN(capitalizeFirstLetter(pokemon.name)) ? null: capitalizeFirstLetter(pokemon.name)} </h1> */}
         <h1 className='pokeName'>{pokemon.name}</h1>
         <div className="imgAndStats">
-            <PokeImg imgSource={pokemon.sprites?.front_default} pokeName={pokemon.name} />
+            {pokemon.sprites ? <PokeImg imgSource={pokemon.sprites?.front_default} pokeName={pokemon.name}/>: null}
             <PokeTextArea className='stats' stats={pokemon?.stats}/>
         </div>
         <PokeTextArea className='types' types={pokemon?.types}/>

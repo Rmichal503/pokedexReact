@@ -5,9 +5,7 @@ import './small-pokemon.styles.css'
 
 const SmallPokemon =({pokemon}) => {
         console.log('pokemony:  ',pokemon);
-        // const capitalizeFirstLetter = (string) => {
-        //     return string?.charAt(0).toUpperCase() + string?.slice(1);
-        // }
+        
         return(
             pokemon.map((el, index)=>{
                 return(

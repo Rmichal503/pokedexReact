@@ -26,7 +26,7 @@
     padding: 0.5rem;
     margin: 1rem;
 }
-.smallColection{
+.smallCollection{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
