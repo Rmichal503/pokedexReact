@@ -1,4 +1,4 @@
-.smallPoke{
+/* .smallPoke{
     display: flex;
     flex-direction: column;
     max-width: 340px;
@@ -11,7 +11,7 @@
     border-radius: 2ex;
     padding: 0.5rem;
     margin: 1rem;
-}
+} */
 .smallCollection{
     display: flex;
     flex-direction: row;

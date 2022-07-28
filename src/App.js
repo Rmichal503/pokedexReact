@@ -6,9 +6,12 @@ import SmallPokemon from './components/small-pokemon/small-pokemon.component';
 import styled from 'styled-components';
 
 const SmallColection = styled.div`
+  position:absolute;
+  width:100vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  top:60%;
 `
 
 export const App = () => {
@@ -20,11 +23,13 @@ export const App = () => {
   const [toggle, setToggle] = useState(false);
 
   const fetchingData=()=>{
-    fetch(`https://pokeapi.co/api/v2/pokemon/${searchString}/`)
+    if(searchString){
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${searchString}/`)
     .then((response) =>response.json())
       .then((users) =>{
         setPokemon(users);
-      })
+      })}
+    alert('No name or number of pokemon to look for!')
   }
 
   const luckySpin = ()=>{
@@ -49,13 +54,16 @@ export const App = () => {
   }
 
   const toggleCollection=()=>{
+    console.log(toggle);
     setToggle(!toggle);
   }
 
   const saveLocaleDate =()=>{
     const collName = document.querySelector('.collectionInput').value
     localStorage.setItem(collName, JSON.stringify(smallPokemons))
-    console.log(collName)
+    console.log(collName);
+    document.querySelector('.collectionInput').value = '';
+    setSmallPokemons([]);
   }
 
   const showLocaleCollection = (localColl)=>{
@@ -70,25 +78,31 @@ export const App = () => {
     <div className="App">
         <div className="mainPok">
           <PokeCard pokemon={pokemon} addingHandler={addingSmallCard} clickSearchHandler={fetchingData} clickLuckyHandler={luckySpin} inputValueHandler={inputValue}/>
-          {localCollections[0]?localCollections.map(el=>{
-            return(<PokeButton clickHandler={()=>{showLocaleCollection(el);
-              // <SmallPokemon pokemon={JSON.parse(window.localStorage.getItem(el))}/>
-            }} buttonText={el} buttonClass='localButton'/>)}):null}
           <div className='localStorage'>
-          <input className='collectionInput' type={'search'}></input>
-          <PokeButton clickHandler={saveLocaleDate} buttonClass='saveData' buttonText={'Save Collection'} />
-          <PokeButton clickHandler={allKeys} buttonClass='showCollection' buttonText={'Show Collection'} />
-          <PokeButton clickHandler={()=>{
-            localStorage.clear();
-            alert('Collection Deleted');
-          }} buttonClass='deleteCollection' buttonText={'Delete Collection'} />
+            <input className='collectionInput' type={'search'}></input>
+            <PokeButton clickHandler={saveLocaleDate} buttonClass='saveData localButton' buttonText={'Save Collection'} />
+            <PokeButton clickHandler={allKeys} buttonClass='showCollection localButton' buttonText={'Show Collection'} />
+            <PokeButton clickHandler={()=>{
+              return setSmallPokemons([]);
+            }} buttonClass='showCollection localButton' buttonText={'Clear Current Collection'} />
+            <PokeButton clickHandler={()=>{
+              localStorage.clear();
+              alert('Collection Deleted');
+            }} buttonClass='deleteCollection localButton' buttonText={'Delete Collection'} />
+            <PokeButton clickHandler={toggleCollection} buttonClass='toogle localButton' buttonText={'Show pokemons'} />
           </div>
+          <div className="localStorageCollections">
+              {localCollections[0]?localCollections.map(el=>{
+                return(<PokeButton clickHandler={()=>{showLocaleCollection(el);
+                  // <SmallPokemon pokemon={JSON.parse(window.localStorage.getItem(el))}/>
+                }} buttonText={el} buttonClass='localCollectionButton'/>)}):null}
+            </div>
         </div>
-        <PokeButton clickHandler={toggleCollection} buttonClass='toogle' buttonText={'Show pokemons'} />
-        <SmallColection className="smallCollection show">
+        {toggle&&<SmallColection 
+          className="smallCollection">
           {/* {toggle?<SmallPokemon pokemon={smallPokemons} />:null} */}
           {localPokemons[0]?<SmallPokemon pokemon={localPokemons} />:null}
-        </SmallColection>
+        </SmallColection>}
     </div>
   )
 }

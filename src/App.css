@@ -2,29 +2,38 @@
   font-family: 'Press Start 2P', cursive;
 }
 .App{
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr ;
-  justify-content: space-evenly; */
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-}
-/* .toogle{
-  
-} */
-.show{
-  visibility: hidden;
 }
 .mainPok{
   display: flex;
   flex-direction: row;
 }
 .localButton{
-  width: 90px;
-  height: 30px;
+  width: 200px;
+  height: 50px;
   margin: 5px;
 }
+.localStorage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.localStorage input{
+  margin:5px;
+}
+.localStorageCollections{
+  display: flex;
+  flex-wrap: wrap;
+}
+.localCollectionButton{
+  height: 50px;
+  width: fit-content;
+  margin:5px;
+}
+
 
 
 
