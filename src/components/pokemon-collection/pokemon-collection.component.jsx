@@ -11,6 +11,7 @@ const SmallColection = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   top:65%;
+  left:0;
 `
 
 export const PokemonCollection = () => {
@@ -22,14 +23,6 @@ export const PokemonCollection = () => {
   const toggleCollection=()=>{
     console.log(toggle);
     setToggle(!toggle);
-  }
-
-  const saveLocaleDate =()=>{
-    const collName = document.querySelector('.collectionInput').value
-    localStorage.setItem(collName, JSON.stringify(smallPokemons))
-    console.log(collName);
-    document.querySelector('.collectionInput').value = '';
-    setSmallPokemons([]);
   }
 
   const showLocaleCollection = (localColl)=>{
@@ -46,8 +39,6 @@ export const PokemonCollection = () => {
             <Link to={'/'}>Back</Link>
         </nav>
         <div>
-            <input className='collectionInput' type={'search'} placeholder='Collection Name'></input>
-            <PokeButton clickHandler={saveLocaleDate} buttonClass='saveData localButton' buttonText={'Save Collection'} />
             <PokeButton clickHandler={allKeys} buttonClass='showCollection localButton' buttonText={'Show Collection'} />
             <PokeButton clickHandler={()=>{
               return setSmallPokemons([]);
@@ -57,18 +48,18 @@ export const PokemonCollection = () => {
               alert('Collection Deleted');
             }} buttonClass='deleteCollection localButton' buttonText={'Delete Collection'} />
             <PokeButton clickHandler={toggleCollection} buttonClass='toggle localButton' buttonText={'Show pokemons'} />
-          </div>
           <div className="localStorageCollections">
               {localCollections[0]?localCollections.map(el=>{
                 return(<PokeButton clickHandler={()=>{showLocaleCollection(el);
-                  // <SmallPokemon pokemon={JSON.parse(window.localStorage.getItem(el))}/>
                 }} buttonText={el} buttonClass='localCollectionButton'/>)}):null}
+          </div>
+        </div>
+            <div>
+              {toggle&&<SmallColection
+                  className="smallCollection">
+                  {localPokemons[0]?<SmallPokemon pokemon={localPokemons} />:null}
+                </SmallColection>}
             </div>
-            {toggle&&<SmallColection 
-                className="smallCollection">
-                {/* {toggle?<SmallPokemon pokemon={smallPokemons} />:null} */}
-                {localPokemons[0]?<SmallPokemon pokemon={localPokemons} />:null}
-              </SmallColection>}
         </div>
         
   )

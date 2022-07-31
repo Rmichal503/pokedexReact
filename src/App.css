@@ -35,12 +35,14 @@ body{
 }
 .App{
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
+  height: 100vh;
 }
 .mainPok{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 .localButton{
   width: 200px;
