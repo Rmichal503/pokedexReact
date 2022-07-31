@@ -2,25 +2,13 @@ import './App.css';
 import React, { useState } from 'react';
 import PokeButton from './components/buttons/buttons.component';
 import PokeCard from './components/poke-card/poke-card.component';
-import SmallPokemon from './components/small-pokemon/small-pokemon.component';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
-const SmallColection = styled.div`
-  position:absolute;
-  width:100vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  top:60%;
-`
 
 export const App = () => {
   const [pokemon, setPokemon] = useState({});
   const [searchString, setSearchString] = useState('');
   const [smallPokemons, setSmallPokemons] = useState([]);
-  const [localCollections, setLocalCollections] = useState([]);
-  const [localPokemons, setLocalPokemons] = useState([]);
-  const [toggle, setToggle] = useState(false);
 
   const fetchingData=()=>{
     if(searchString){
@@ -53,11 +41,6 @@ export const App = () => {
     console.log(smallPokemons);
   }
 
-  const toggleCollection=()=>{
-    console.log(toggle);
-    setToggle(!toggle);
-  }
-
   const saveLocaleDate =()=>{
     const collName = document.querySelector('.collectionInput').value
     localStorage.setItem(collName, JSON.stringify(smallPokemons))
@@ -65,44 +48,21 @@ export const App = () => {
     document.querySelector('.collectionInput').value = '';
     setSmallPokemons([]);
   }
-
-  const showLocaleCollection = (localColl)=>{
-    console.log(`lokalna kolekcja ${localColl}`)
-    setLocalPokemons(JSON.parse(localStorage.getItem(localColl)))
-  }
-
-  const allKeys=()=>{
-    setLocalCollections(Object.keys(localStorage))
-  }
   return (
     <div className="App">
+      <nav>
+        <Link to='collection_of_pokemons'>Collection</Link>
+      </nav>
         <div className="mainPok">
           <PokeCard pokemon={pokemon} addingHandler={addingSmallCard} clickSearchHandler={fetchingData} clickLuckyHandler={luckySpin} inputValueHandler={inputValue}/>
           <div className='localStorage'>
-            <input className='collectionInput' type={'search'}></input>
+            <input className='collectionInput' type={'search'} placeholder='Collection Name'></input>
             <PokeButton clickHandler={saveLocaleDate} buttonClass='saveData localButton' buttonText={'Save Collection'} />
-            <PokeButton clickHandler={allKeys} buttonClass='showCollection localButton' buttonText={'Show Collection'} />
             <PokeButton clickHandler={()=>{
               return setSmallPokemons([]);
-            }} buttonClass='showCollection localButton' buttonText={'Clear Current Collection'} />
-            <PokeButton clickHandler={()=>{
-              localStorage.clear();
-              alert('Collection Deleted');
-            }} buttonClass='deleteCollection localButton' buttonText={'Delete Collection'} />
-            <PokeButton clickHandler={toggleCollection} buttonClass='toogle localButton' buttonText={'Show pokemons'} />
+            }} buttonClass='clearCurrentCollection localButton' buttonText={'Clear Current Collection'} />
           </div>
-          <div className="localStorageCollections">
-              {localCollections[0]?localCollections.map(el=>{
-                return(<PokeButton clickHandler={()=>{showLocaleCollection(el);
-                  // <SmallPokemon pokemon={JSON.parse(window.localStorage.getItem(el))}/>
-                }} buttonText={el} buttonClass='localCollectionButton'/>)}):null}
-            </div>
         </div>
-        {toggle&&<SmallColection 
-          className="smallCollection">
-          {/* {toggle?<SmallPokemon pokemon={smallPokemons} />:null} */}
-          {localPokemons[0]?<SmallPokemon pokemon={localPokemons} />:null}
-        </SmallColection>}
     </div>
   )
 }

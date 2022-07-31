@@ -10,7 +10,7 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     max-width: 350px;
-    height: 400px;
+    height: 430px;
     justify-content: space-evenly;
     align-items: center;
     flex-basis: 50%;
@@ -19,7 +19,7 @@ const Card = styled.div`
     border-radius: 2ex;
     padding: 0.5rem;
     margin: 1rem;
-    background-color: gold;
+    background-color: var(--poke-gold-color);
 `
 const ImgAndStats = styled.div`
     display: flex;
@@ -39,7 +39,7 @@ return (
         <div className="buttons">
             <PokeButton clickHandler={clickSearchHandler} buttonClass='searchingButton' buttonText={'Search'}/>
             <PokeButton clickHandler={clickLuckyHandler} buttonClass='luckySpin' buttonText={'Random'}/>
-            <PokeButton clickHandler={addingHandler} buttonClass='add' buttonText={'Add'}/>
+            <PokeButton clickHandler={addingHandler} buttonClass='add' buttonText={''}/>
         </div>
     </Card>
 )

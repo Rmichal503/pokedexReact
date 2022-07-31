@@ -1,5 +1,37 @@
+:root{
+  --bg-color: #fff;
+  --poke-gold-color: #fbd743;
+  --poke-red-color: #ff1f1f;
+  --poke-blue-color: #5bd9ff;
+  --poke-navy-color: #363b81;
+  --poke-screen-color: #627820;
+  --bg-grass:#66f70A;
+  --bg-fire:#f8b80d;
+  --bg-water:#36aef6;
+  --bg-normal:#eaeade;
+  --bg-flying:#dbe5ea;
+  --bg-bug:#d8fe9d;
+  --bg-poison:#c972eb;
+  --bg-electric:#f7ff84;
+  --bg-ground:#ece193;
+  --bg-fighting:#d26063;
+  --bg-psychic:#f45792;
+  --bg-rock:#94824e;
+  --bg-ice:#65d0e4;
+  --bg-ghost:#bc98ca;
+  --bg-dragon:#8A55FD;
+  --bg-dark:#906852;
+  --bg-steel:#bac5c3;
+  --bg-fairy:#fdd1e0;
+  --shadow: 4px 4px 8px 0px rgba(0, 0, 0, 1);
+}
 *{
   font-family: 'Press Start 2P', cursive;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--poke-red-color);
 }
 .App{
   display: flex;
@@ -14,6 +46,8 @@
   width: 200px;
   height: 50px;
   margin: 5px;
+  background-color: var(--poke-gold-color);
+  border-radius: 0.5rem;
 }
 .localStorage{
   display: flex;
@@ -23,17 +57,32 @@
 }
 .localStorage input{
   margin:5px;
+  height: 3rem;
+  font-size: 1rem;
+}
+.localStorage input::placeholder{
+  text-align: center;
 }
 .localStorageCollections{
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .localCollectionButton{
   height: 50px;
-  width: fit-content;
+  width: 100%;
   margin:5px;
 }
 
+.toggle{
+  margin-top: 2rem;
+  width: 300px;
+  height: 5rem;
+  font-size: 1.5rem;
+
+}
 
 
 

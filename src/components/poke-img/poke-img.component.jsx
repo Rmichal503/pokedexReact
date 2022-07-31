@@ -2,13 +2,16 @@ import styled from 'styled-components'
 
 const PokeImage = styled.div`
     justify-self: center;
-    grid-area: img;
+    // filter: grayscale(100%);
     padding: 2px;
     height: fit-content;
     width: fit-content;
     border: 1px solid black;
     border-radius: 2ex;
-    background-color: white;
+    background-color: var(--poke-screen-color);
+    // img{
+    //     filter: grayscale(100%);
+    // }
 `
 const PokeImg = (props)=>{
     return(
