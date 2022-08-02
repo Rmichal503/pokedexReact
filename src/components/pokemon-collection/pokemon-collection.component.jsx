@@ -28,6 +28,9 @@ export const PokemonCollection = () => {
   const showLocaleCollection = (localColl)=>{
     console.log(`lokalna kolekcja ${localColl}`)
     setLocalPokemons(JSON.parse(localStorage.getItem(localColl)))
+    if(!toggle){
+      return setToggle(!toggle);
+    }
   }
 
   const allKeys=()=>{
