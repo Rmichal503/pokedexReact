@@ -53,8 +53,14 @@ export const PokemonCollection = () => {
             <PokeButton clickHandler={toggleCollection} buttonClass='toggle localButton' buttonText={'Show pokemons'} />
           <div className="localStorageCollections">
               {localCollections[0]?localCollections.map(el=>{
-                return(<PokeButton clickHandler={()=>{showLocaleCollection(el);
-                }} buttonText={el} buttonClass='localCollectionButton'/>)}):null}
+                return(
+                <div className='colButtons'>
+                  <PokeButton clickHandler={()=>{showLocaleCollection(el);}} 
+                  buttonText={el} buttonClass='localCollectionButton'/>
+                  <PokeButton clickHandler={()=>{localStorage.removeItem(el);
+                  allKeys()}} 
+                  buttonText='DELETE' buttonClass='deleteSingleCollection'/>
+                </div>)}):null}
           </div>
         </div>
             <div>

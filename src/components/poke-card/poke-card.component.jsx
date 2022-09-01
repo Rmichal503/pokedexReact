@@ -29,7 +29,7 @@ export default function PokeCard({pokemon, clickSearchHandler, clickLuckyHandler
 return (
     <Card className="card">
         {/* <h1 className='pokeName'>{isNaN(capitalizeFirstLetter(pokemon.name)) ? null: capitalizeFirstLetter(pokemon.name)} </h1> */}
-        <h1 className='pokeName'>{pokemon.name}</h1>
+        <h1 className='pokeName'>{pokemon.name} #{pokemon.id}</h1>
         <ImgAndStats className="imgAndStats">
             {pokemon.sprites ? <PokeImg imgSource={pokemon.sprites?.front_default} pokeName={pokemon.name}/>: null}
             <PokeTextArea className='stats' stats={pokemon?.stats}/>
